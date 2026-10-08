@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Admin Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow Command Center</h1>
+        <p>Logged in as: <strong>Super Administrator</strong> | Role: <code>admin</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="users.html">User Directory</a> |
+            <a href="rides.html">All Rides</a> |
+            <a href="complaints.html">Complaints Queue</a> |
+            <a href="register.html">Add New Admin</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>System Overview Metrics</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Current Count</th>
+                        <th>Database Source Table</th>
+                        <th>Quick Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Platform Users</td>
+                        <td >1,245</td>
+                        <td><code>users</code></td>
+                        <td><a href="users.html">Manage Users</a></td>
+                    </tr>
+                    <tr>
+                        <td>Active On-Duty Drivers</td>
+                        <td>88</td>
+                        <td><code>driver_profiles</code></td>
+                        <td><a href="users.html?filter=driver">View Drivers</a></td>
+                    </tr>
+                    <tr>
+                        <td>Rides In Progress</td>
+                        <td>34</td>
+                        <td><code>rides (status='started')</code></td>
+                        <td><a href="rides.html?status=started">Monitor Rides</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pending Complaints</td>
+                        <td>12</td>
+                        <td><code>complaints (status='pending')</code></td>
+                        <td><a href="complaints.html">Resolve Complaints</a></td>
+                    </tr>
+                    <tr>
+                        <td>Unresolved Emergencies</td>
+                        <td><strong>2</strong></td>
+                        <td><code>emergency_requests</code></td>
+                        <td><a href="emergencies.html">Dispatch Emergency</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <section>
+            <h2>Recent Platform Rides</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID</th>
+                        <th>Passenger ID</th>
+                        <th>Driver ID</th>
+                        <th>Pickup</th>
+                        <th>Destination</th>
+                        <th>Fare</th>
+                        <th>Status</th>
+                        <th>Requested At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#RD-5012</td>
+                        <td>PASS-102</td>
+                        <td>DRV-88</td>
+                        <td>Banani Rd 11</td>
+                        <td>Gulshan 2 Circle</td>
+                        <td>$12.50</td>
+                        <td>Completed</td>
+                        <td>2026-10-09 02:15:00</td>
+                    </tr>
+                    <tr>
+                        <td>#RD-5013</td>
+                        <td>PASS-405</td>
+                        <td>DRV-19</td>
+                        <td>Dhanmondi 27</td>
+                        <td>Uttara Sector 3</td>
+                        <td>$24.00</td>
+                        <td>Started</td>
+                        <td>2026-10-09 02:30:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Admin Dashboard</p>
+    </footer>
+</body>
+</html>

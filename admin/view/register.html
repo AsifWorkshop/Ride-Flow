@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Admin Registration</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow Administration</h1>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="users.html">User Management</a> |
+            <a href="register.html">Register New Admin</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <h2>Register New Administrator Account</h2>
+        <form action="#" method="POST">
+            <fieldset>
+                <legend>Core Account Credentials (users table)</legend>
+                <p>
+                    <label for="name">Full Name:</label><br>
+                    <input type="text" id="name" name="name" required>
+                </p>
+                <p>
+                    <label for="email">Email Address (Unique):</label><br>
+                    <input type="email" id="email" name="email" required>
+                </p>
+                <p>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </p>
+                <p>
+                    <label for="phone">Phone Number:</label><br>
+                    <input type="tel" id="phone" name="phone" required>
+                </p>
+                <p>
+                    <label for="role">User Role:</label><br>
+                    <select id="role" name="role" required>
+                        <option value="admin" selected>Admin</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="status">Account Status:</label><br>
+                    <select id="status" name="status" required>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="suspended">Suspended</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Administrative Attributes (dispatcher_profiles / admin extension)</legend>
+                <p>
+                    <label for="employee_id">1. Employee ID (Unique):</label><br>
+                    <input type="text" id="employee_id" name="employee_id" placeholder="ADM-1001" required>
+                </p>
+                <p>
+                    <label for="department">2. Department:</label><br>
+                    <select id="department" name="department" required>
+                        <option value="">-- Select Department --</option>
+                        <option value="operations">Operations Management</option>
+                        <option value="security">Safety & Emergency Response</option>
+                        <option value="support">Customer Support & Disputes</option>
+                        <option value="it_admin">System Administration</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="shift">3. Work Shift:</label><br>
+                    <select id="shift" name="shift" required>
+                        <option value="morning">Morning Shift (06:00 - 14:00)</option>
+                        <option value="evening">Evening Shift (14:00 - 22:00)</option>
+                        <option value="night">Night Shift (22:00 - 06:00)</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="experience">4. Experience Level (Years):</label><br>
+                    <input type="number" id="experience" name="experience" min="0" max="40" required>
+                </p>
+                <p>
+                    <label for="office_location">5. Office Location/Station:</label><br>
+                    <input type="text" id="office_location" name="office_location" placeholder="HQ - Central Operations" required>
+                </p>
+                <p>
+                    <label for="access_level">6. Security Clearance Level:</label><br>
+                    <select id="access_level" name="access_level" required>
+                        <option value="level_1">Level 1 - Read Only</option>
+                        <option value="level_2">Level 2 - Dispatcher Ops</option>
+                        <option value="level_3">Level 3 - Super Admin</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <p>
+                <button type="submit">Create Admin Account</button>
+                <button type="reset">Clear Form</button>
+            </p>
+        </form>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow System Admin Panel</p>
+    </footer>
+</body>
+</html>
