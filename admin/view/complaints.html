@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Complaints & Support Management</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow Complaints Management Queue</h1>
+        <p>Logged in as: <strong>Super Administrator</strong> | Role: <code>admin</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="users.html">User Directory</a> |
+            <a href="rides.html">All Rides</a> |
+            <a href="complaints.html">Complaints Queue</a> |
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>Filter Complaints Queue</h2>
+            <form action="#" method="GET">
+                <p>
+                    <label for="status_filter">Complaint Status:</label>
+                    <select id="status_filter" name="status_filter">
+                        <option value="">All Statuses</option>
+                        <option value="pending" selected>Pending</option>
+                        <option value="in_review">In Review</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+
+                    <label for="search_user">Search User ID / Email:</label>
+                    <input type="text" id="search_user" name="search_user" placeholder="e.g. USR-042">
+
+                    <label for="search_ride">Search Ride ID:</label>
+                    <input type="text" id="search_ride" name="search_ride" placeholder="e.g. RD-5012">
+
+                    <button type="submit">Filter Queue</button>
+                </p>
+            </form>
+        </section>
+
+        <br><hr><br>
+
+        <section>
+            <h2>Active Support & Dispute Queue (`complaints` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Complaint ID (PK)</th>
+                        <th>User ID (FK)</th>
+                        <th>Ride ID (FK, Nullable)</th>
+                        <th>Subject</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Submitted At</th>
+                        <th>Resolved By (FK)</th>
+                        <th>Resolution Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CMP-101</td>
+                        <td>USR-042</td>
+                        <td>RD-5012</td>
+                        <td>Overcharged Fare</td>
+                        <td>Driver took a longer route than specified by GPS leading to a higher toll fare.</td>
+                        <td><code>pending</code></td>
+                        <td>2026-10-09 02:20:00</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>CMP-102</td>
+                        <td>USR-089</td>
+                        <td>RD-5010</td>
+                        <td>Rude Behavior</td>
+                        <td>Passenger engaged in argumentative behavior throughout the trip.</td>
+                        <td><code>in_review</code></td>
+                        <td>2026-10-08 18:45:12</td>
+                        <td>USR-001 (Admin)</td>
+                        <td>Contacting passenger for clarification.</td>
+                    </tr>
+                    <tr>
+                        <td>CMP-098</td>
+                        <td>USR-015</td>
+                        <td><em>None (Account Issue)</em></td>
+                        <td>Payment Method Verification</td>
+                        <td>Unable to detach expired credit card from profile settings.</td>
+                        <td><code>resolved</code></td>
+                        <td>2026-10-07 11:05:00</td>
+                        <td>USR-001 (Admin)</td>
+                        <td>Card detached manually by system administrator.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <section>
+            <h2>Manual Dispute Resolution Form</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Resolve Complaint Ticket</legend>
+                    <p>
+                        <label for="complaint_id">Complaint ID:</label><br>
+                        <input type="text" id="complaint_id" name="complaint_id" placeholder="e.g. CMP-101" required>
+                    </p>
+                    <p>
+                        <label for="status">Update Status:</label><br>
+                        <select id="status" name="status" required>
+                            <option value="in_review">In Review</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="resolved_by">Resolved By (Admin User ID):</label><br>
+                        <input type="text" id="resolved_by" name="resolved_by" value="USR-001" readonly required>
+                    </p>
+                    <p>
+                        <label for="resolution">Resolution Details / Action Taken:</label><br>
+                        <textarea id="resolution" name="resolution" rows="4" cols="50" placeholder="State refund actions, warning issued, or escalation details..." required></textarea>
+                    </p>
+                    <p>
+                        <button type="submit">Submit Resolution</button>
+                        <button type="reset">Clear Form</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow System Admin Panel - Support Module</p>
+    </footer>
+</body>
+</html>

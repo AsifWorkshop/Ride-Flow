@@ -13,7 +13,7 @@
             <a href="users.html">User Directory</a> |
             <a href="rides.html">All Rides</a> |
             <a href="complaints.html">Complaints Queue</a> |
-            <a href="register.html">Add New Admin</a>
+
         </nav>
     </header>
     <hr>
@@ -27,7 +27,6 @@
                         <th>Metric</th>
                         <th>Current Count</th>
                         <th>Database Source Table</th>
-                        <th>Quick Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,31 +34,26 @@
                         <td>Total Platform Users</td>
                         <td >1,245</td>
                         <td><code>users</code></td>
-                        <td><a href="users.html">Manage Users</a></td>
                     </tr>
                     <tr>
                         <td>Active On-Duty Drivers</td>
                         <td>88</td>
                         <td><code>driver_profiles</code></td>
-                        <td><a href="users.html?filter=driver">View Drivers</a></td>
                     </tr>
                     <tr>
                         <td>Rides In Progress</td>
                         <td>34</td>
                         <td><code>rides (status='started')</code></td>
-                        <td><a href="rides.html?status=started">Monitor Rides</a></td>
                     </tr>
                     <tr>
                         <td>Pending Complaints</td>
                         <td>12</td>
                         <td><code>complaints (status='pending')</code></td>
-                        <td><a href="complaints.html">Resolve Complaints</a></td>
                     </tr>
                     <tr>
                         <td>Unresolved Emergencies</td>
                         <td><strong>2</strong></td>
                         <td><code>emergency_requests</code></td>
-                        <td><a href="emergencies.html">Dispatch Emergency</a></td>
                     </tr>
                 </tbody>
             </table>

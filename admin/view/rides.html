@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Rides Management</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow System Ride Management</h1>
+        <p>Logged in as: <strong>Super Administrator</strong> | Role: <code>admin</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="users.html">User Directory</a> |
+            <a href="rides.html">All Rides</a> |
+            <a href="complaints.html">Complaints Queue</a> |
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>Filter Platform Rides</h2>
+            <form action="#" method="GET">
+                <p>
+                    <label for="status_filter">Ride Status:</label>
+                    <select id="status_filter" name="status_filter">
+                        <option value="">All Statuses</option>
+                        <option value="requested">Requested</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="started">Started (In-Progress)</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+
+                    <label for="passenger_id">Passenger ID:</label>
+                    <input type="text" id="passenger_id" name="passenger_id" placeholder="e.g. PASS-102">
+
+                    <label for="driver_id">Driver ID:</label>
+                    <input type="text" id="driver_id" name="driver_id" placeholder="e.g. DRV-88">
+
+                    <button type="submit">Filter Rides</button>
+                </p>
+            </form>
+        </section>
+
+        <br><hr><br>
+
+        <section>
+            <h2>Master Rides Log (`rides` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID (PK)</th>
+                        <th>Passenger ID (FK)</th>
+                        <th>Driver ID (FK)</th>
+                        <th>Dispatcher ID (FK)</th>
+                        <th>Pickup Location</th>
+                        <th>Destination</th>
+                        <th>Fare</th>
+                        <th>Status</th>
+                        <th>Timestamps</th>
+                        <th>Cancellation Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RD-5012</td>
+                        <td>PASS-102</td>
+                        <td>DRV-88</td>
+                        <td>DISP-05</td>
+                        <td>Banani Rd 11</td>
+                        <td>Gulshan 2 Circle</td>
+                        <td>$12.50</td>
+                        <td><code>completed</code></td>
+                        <td>
+                            <strong>Req:</strong> 02:15:00<br>
+                            <strong>Assign:</strong> 02:17:10<br>
+                            <strong>Start:</strong> 02:22:00<br>
+                            <strong>Comp:</strong> 02:40:00
+                        </td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>RD-5013</td>
+                        <td>PASS-405</td>
+                        <td>DRV-19</td>
+                        <td><em>Auto-Matched</em></td>
+                        <td>Dhanmondi 27</td>
+                        <td>Uttara Sector 3</td>
+                        <td>$24.00</td>
+                        <td><code>started</code></td>
+                        <td>
+                            <strong>Req:</strong> 02:30:00<br>
+                            <strong>Assign:</strong> 02:31:00<br>
+                            <strong>Start:</strong> 02:36:12<br>
+                            <strong>Comp:</strong> --
+                        </td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>RD-5014</td>
+                        <td>PASS-089</td>
+                        <td><em>Unassigned</em></td>
+                        <td><em>Pending</em></td>
+                        <td>Mirpur 10</td>
+                        <td>Airport Terminal 1</td>
+                        <td>$18.00</td>
+                        <td><code>requested</code></td>
+                        <td>
+                            <strong>Req:</strong> 02:42:00<br>
+                            <strong>Assign:</strong> --<br>
+                            <strong>Start:</strong> --<br>
+                            <strong>Comp:</strong> --
+                        </td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>RD-5010</td>
+                        <td>PASS-301</td>
+                        <td>DRV-12</td>
+                        <td>DISP-02</td>
+                        <td>Farmgate</td>
+                        <td>Motijheel</td>
+                        <td>$0.00</td>
+                        <td><code>cancelled</code></td>
+                        <td>
+                            <strong>Req:</strong> 01:10:00<br>
+                            <strong>Assign:</strong> 01:12:00<br>
+                            <strong>Start:</strong> --<br>
+                            <strong>Comp:</strong> --
+                        </td>
+                        <td>Driver delayed in traffic exceeding 15 mins.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <section>
+            <h2>Manual Ride Dispatch / Override Form</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Override & Assign Ride</legend>
+                    <p>
+                        <label for="ride_id">Ride ID:</label><br>
+                        <input type="text" id="ride_id" name="ride_id" placeholder="e.g. RD-5014" required>
+                    </p>
+                    <p>
+                        <label for="assign_driver_id">Assign Driver ID:</label><br>
+                        <input type="text" id="assign_driver_id" name="assign_driver_id" placeholder="e.g. DRV-88" required>
+                    </p>
+                    <p>
+                        <label for="dispatcher_id">Assigned By Dispatcher ID:</label><br>
+                        <input type="text" id="dispatcher_id" name="dispatcher_id" value="DISP-01" required>
+                    </p>
+                    <p>
+                        <label for="update_status">Update Status:</label><br>
+                        <select id="update_status" name="update_status" required>
+                            <option value="assigned" selected>Assigned</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button type="submit">Execute Dispatch</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow System Admin Panel - Rides Management</p>
+    </footer>
+</body>
+</html>
