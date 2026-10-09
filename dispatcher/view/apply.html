@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Dispatcher Job Application</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow Operations - Dispatcher Job Application</h1>
+        <p>Join our central operations team to manage live fleet routing, driver dispatching, and emergency responses.</p>
+        <nav>
+            <a href="../../../commonui/view/html/landing.html">Home</a> |
+            <a href="../../../commonui/view/html/login.html">Sign In</a> |
+            <a href="apply.html">Apply as Dispatcher</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>Application & Onboarding Form</h2>
+            <p><strong>Note:</strong> All dispatcher applications undergo manual administrative review. Your account status will remain <code>pending</code> until approved by a System Administrator.</p>
+
+            <form action="#" method="POST">
+                <!-- SECTION 1: PERSONAL & ACCOUNT CREDENTIALS -->
+                <fieldset>
+                    <legend>1. Account & Contact Credentials (`users` table)</legend>
+                    <p>
+                        <label for="name">Full Name:</label><br>
+                        <input type="text" id="name" name="name" placeholder="e.g. Tanvir Rahman" required>
+                    </p>
+                    <p>
+                        <label for="email">Email Address (Login Identifier):</label><br>
+                        <input type="email" id="email" name="email" placeholder="tanvir@rideflow.com" required>
+                    </p>
+                    <p>
+                        <label for="phone">Phone Number:</label><br>
+                        <input type="tel" id="phone" name="phone" placeholder="+8801700000000" required>
+                    </p>
+                    <p>
+                        <label for="password">Account Password:</label><br>
+                        <input type="password" id="password" name="password" minlength="8" required>
+                    </p>
+                    <p>
+                        <label for="confirm_password">Confirm Password:</label><br>
+                        <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
+                    </p>
+                </fieldset>
+
+                <br>
+
+                <!-- SECTION 2: PROFESSIONAL DISPATCHER PROFILE -->
+                <fieldset>
+                    <legend>2. Professional Profile (`dispatcher_profiles` table)</legend>
+                    <p>
+                        <label for="employee_id">Requested / Proposed Employee ID:</label><br>
+                        <input type="text" id="employee_id" name="employee_id" placeholder="e.g. EMP-DISP-104" required>
+                    </p>
+                    <p>
+                        <label for="department">Preferred Department / Operations Unit:</label><br>
+                        <select id="department" name="department" required>
+                            <option value="">-- Select Department --</option>
+                            <option value="Central Dispatch">Central Dispatch</option>
+                            <option value="Emergency & Safety Response">Emergency & Safety Response</option>
+                            <option value="Fleet Monitoring & Logistics">Fleet Monitoring & Logistics</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="shift">Shift Preference:</label><br>
+                        <select id="shift" name="shift" required>
+                            <option value="">-- Select Shift --</option>
+                            <option value="morning">Morning Shift (06:00 AM - 02:00 PM)</option>
+                            <option value="evening">Evening Shift (02:00 PM - 10:00 PM)</option>
+                            <option value="night">Night Shift (10:00 PM - 06:00 AM)</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="experience">Years of Dispatch / Logistics Experience:</label><br>
+                        <input type="number" id="experience" name="experience" min="0" max="40" placeholder="e.g. 3" required>
+                    </p>
+                </fieldset>
+
+                <br>
+
+                <!-- SECTION 3: TERMS & SUBMISSION -->
+                <fieldset>
+                    <legend>3. Declaration & Terms</legend>
+                    <p>
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I certify that all details provided are accurate and agree to follow RideFlow Operational Guidelines.</label>
+                    </p>
+                    <p>
+                        <button type="submit">Submit Application for Review</button>
+                        <button type="reset">Clear Form</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Central Operations - Human Resources & Recruitment</p>
+    </footer>
+</body>
+</html>

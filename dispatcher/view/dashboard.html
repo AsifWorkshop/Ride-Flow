@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow Dispatcher - Central Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>RideFlow Operational Command Center</h1>
+        <p>Logged in as: <strong>Dispatcher Agent</strong> | Role: <code>dispatcher</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="rides.html">Proximity Dispatch & Rides</a> |
+            <a href="emergencies.html">Emergency SOS Queue</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <!-- SYSTEM OVERVIEW METRICS -->
+        <section>
+            <h2>System Overview Metrics</h2>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Pending Requests</th>
+                        <th>Online Drivers Nearby</th>
+                        <th>Active Rides En Route</th>
+                        <th>Unresolved SOS Alerts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>3 Rides</strong></td>
+                        <td><strong>12 Drivers</strong></td>
+                        <td><strong>8 Rides</strong></td>
+                        <td><strong>1 Active SOS</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <!-- HIGH-PRIORITY EMERGENCY ALERT BANNER -->
+        <section>
+            <h2>Live Safety Alerts (`emergency_requests` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Ride ID</th>
+                        <th>Passenger ID</th>
+                        <th>Triggered At</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>EMG-901</td>
+                        <td>RD-5010</td>
+                        <td>PASS-301</td>
+                        <td>2026-10-09 05:58:12</td>
+                        <td><code>pending</code></td>
+                        <td><a href="emergencies.html"><button type="button">Claim Incident</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <!-- PENDING RIDE DISPATCH QUEUE BY ZONE -->
+        <section>
+            <h2>Incoming Ride Requests by Zone (`rides` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID</th>
+                        <th>Zone / Pickup Location</th>
+                        <th>Destination</th>
+                        <th>GPS Coordinates</th>
+                        <th>Requested At</th>
+                        <th>Nearest Available Drivers</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RD-5014</td>
+                        <td>Banani Rd 11</td>
+                        <td>Gulshan 2 Circle</td>
+                        <td>23.7937° N, 90.4066° E</td>
+                        <td>06:00:15</td>
+                        <td>3 drivers within 1.5 km</td>
+                        <td><a href="rides.html?ride_id=RD-5014"><button type="button">Open Dispatch Panel</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>RD-5015</td>
+                        <td>Dhanmondi 27</td>
+                        <td>Uttara Sector 3</td>
+                        <td>23.7542° N, 90.3765° E</td>
+                        <td>06:02:40</td>
+                        <td>5 drivers within 2.0 km</td>
+                        <td><a href="rides.html?ride_id=RD-5015"><button type="button">Open Dispatch Panel</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Central Operations Command Center</p>
+    </footer>
+</body>
+</html>

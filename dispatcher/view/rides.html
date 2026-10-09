@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow Dispatcher - Proximity Dispatch</title>
+</head>
+<body>
+    <header>
+        <h1>Proximity Dispatching & Fleet Operations</h1>
+        <p>Logged in as: <strong>Dispatcher Agent</strong> | Role: <code>dispatcher</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="rides.html">Proximity Dispatch & Rides</a> |
+            <a href="emergencies.html">Emergency SOS Queue</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <!-- SECTION 1: PASSENGER RIDE REQUESTS WITH GPS DATA -->
+        <section>
+            <h2>1. Unassigned Passenger Ride Requests (`rides` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID (PK)</th>
+                        <th>Passenger ID (FK)</th>
+                        <th>Pickup Zone</th>
+                        <th>Destination Zone</th>
+                        <th>Pickup Coordinates (Lat, Lng)</th>
+                        <th>Estimated Fare</th>
+                        <th>Status</th>
+                        <th>Select Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>RD-5014</strong></td>
+                        <td>PASS-102</td>
+                        <td>Banani Rd 11</td>
+                        <td>Gulshan 2 Circle</td>
+                        <td><code>23.7937, 90.4066</code></td>
+                        <td>$12.50</td>
+                        <td><code>requested</code></td>
+                        <td><button type="button">Select for Proximity Match</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>RD-5015</strong></td>
+                        <td>PASS-204</td>
+                        <td>Dhanmondi 27</td>
+                        <td>Uttara Sector 3</td>
+                        <td><code>23.7542, 90.3765</code></td>
+                        <td>$22.00</td>
+                        <td><code>requested</code></td>
+                        <td><button type="button">Select for Proximity Match</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <!-- SECTION 2: PROXIMITY-RANKED DRIVERS (HAVERSINE DISTANCE CALCULATED) -->
+        <section>
+            <h2>2. Nearby Available Drivers (`driver_profiles` & `vehicles`)</h2>
+            <p>Drivers automatically ranked by distance proximity to <strong>RD-5014 (Banani Rd 11)</strong> using coordinate calculations.</p>
+
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Driver ID (PK)</th>
+                        <th>Name / License</th>
+                        <th>Vehicle & Reg No</th>
+                        <th>Current Driver Coordinates</th>
+                        <th>Proximity Distance</th>
+                        <th>Availability</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>DRV-88</strong></td>
+                        <td>Karim Ahmed (DL-9920112)</td>
+                        <td>Toyota Premio (Dhaka-Metro-Ga-1234)</td>
+                        <td><code>23.7940, 90.4070</code></td>
+                        <td><strong>0.05 km (Closest)</strong></td>
+                        <td><code>online</code></td>
+                        <td><button type="button">Quick Select DRV-88</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DRV-19</strong></td>
+                        <td>Rahim Sheikh (DL-8830192)</td>
+                        <td>Honda Grace (Dhaka-Metro-Ga-5678)</td>
+                        <td><code>23.7980, 90.4090</code></td>
+                        <td><strong>0.55 km away</strong></td>
+                        <td><code>online</code></td>
+                        <td><button type="button">Quick Select DRV-19</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DRV-12</strong></td>
+                        <td>Tanvir Hossain (DL-7710923)</td>
+                        <td>Hyundai Elantra (Dhaka-Metro-Ga-9012)</td>
+                        <td><code>23.8100, 90.4120</code></td>
+                        <td><strong>1.85 km away</strong></td>
+                        <td><code>online</code></td>
+                        <td><button type="button">Quick Select DRV-12</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DRV-04</strong></td>
+                        <td>Kamal Uddin (DL-1102934)</td>
+                        <td>Nissan Sylphy (Dhaka-Metro-Ga-3456)</td>
+                        <td><code>23.7500, 90.3800</code></td>
+                        <td><strong>5.20 km away</strong></td>
+                        <td><code>in_ride</code></td>
+                        <td><button type="button" disabled>Busy</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        <!-- SECTION 3: MANUAL DISPATCH ASSIGNMENT FORM -->
+        <section>
+            <h2>3. Authorize Ride Dispatch</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Assign Driver to Selected Ride</legend>
+                    <p>
+                        <label for="ride_id">Target Ride ID:</label><br>
+                        <input type="text" id="ride_id" name="ride_id" value="RD-5014" readonly required>
+                    </p>
+                    <p>
+                        <label for="driver_id">Selected Driver ID (Closest Proximity):</label><br>
+                        <input type="text" id="driver_id" name="driver_id" value="DRV-88" required>
+                    </p>
+                    <p>
+                        <label for="dispatcher_id">Authorized Dispatcher ID:</label><br>
+                        <input type="text" id="dispatcher_id" name="dispatcher_id" value="DISP-01" readonly required>
+                    </p>
+                    <p>
+                        <label for="status">Update Ride Status:</label><br>
+                        <select id="status" name="status" required>
+                            <option value="assigned" selected>Assigned (Dispatch Driver)</option>
+                            <option value="cancelled">Cancelled (Override Request)</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="cancellation_reason">Override / Cancellation Reason (If applicable):</label><br>
+                        <textarea id="cancellation_reason" name="cancellation_reason" rows="2" cols="50" placeholder="State reason if cancelling trip..."></textarea>
+                    </p>
+                    <p>
+                        <button type="submit">Execute Proximity Dispatch</button>
+                        <button type="reset">Reset Selection</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Proximity Dispatch System</p>
+    </footer>
+</body>
+</html>

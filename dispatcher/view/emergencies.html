@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow Dispatcher - Emergency SOS Queue</title>
+</head>
+<body>
+    <header>
+        <h1>Emergency Response Incident Control</h1>
+        <p>Logged in as: <strong>Dispatcher Agent</strong> | Role: <code>dispatcher</code></p>
+        <nav>
+            <a href="dashboard.html">Dashboard</a> |
+            <a href="rides.html">Proximity Dispatch & Rides</a> |
+            <a href="emergencies.html">Emergency SOS Queue</a>
+        </nav>
+    </header>
+    <hr>
+
+    <main>
+        <section>
+            <h2>Active SOS Alerts (`emergency_requests` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Emergency ID (PK)</th>
+                        <th>Ride ID (FK)</th>
+                        <th>Passenger ID (FK)</th>
+                        <th>Incident Description</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Handled By (FK)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>EMG-901</strong></td>
+                        <td>RD-5010</td>
+                        <td>PASS-301</td>
+                        <td>Passenger reported vehicle breakdown in remote area.</td>
+                        <td><code>pending</code></td>
+                        <td>2026-10-09 05:58:12</td>
+                        <td><em>Unassigned</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>EMG-889</strong></td>
+                        <td>RD-4998</td>
+                        <td>PASS-012</td>
+                        <td>Driver route mismatch alert triggered automatically.</td>
+                        <td><code>dispatched</code></td>
+                        <td>2026-10-08 22:15:00</td>
+                        <td>DISP-01 (You)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EMG-850</strong></td>
+                        <td>RD-4950</td>
+                        <td>PASS-109</td>
+                        <td>Accidental SOS button press by passenger.</td>
+                        <td><code>resolved</code></td>
+                        <td>2026-10-07 14:20:00</td>
+                        <td>DISP-02</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        
+        <section>
+            <h2>Incident Action & Resolution Control</h2>
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Update SOS Incident (`emergency_requests` table)</legend>
+                    <p>
+                        <label for="emergency_id">Emergency ID:</label><br>
+                        <input type="text" id="emergency_id" name="emergency_id" placeholder="e.g. EMG-901" required>
+                    </p>
+                    <p>
+                        <label for="handled_by">Handled By Dispatcher Profile ID:</label><br>
+                        <input type="text" id="handled_by" name="handled_by" value="DISP-01" readonly required>
+                    </p>
+                    <p>
+                        <label for="status">Update Status:</label><br>
+                        <select id="status" name="status" required>
+                            <option value="dispatched">Dispatched (Assistance En Route)</option>
+                            <option value="resolved">Resolved (Incident Cleared)</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="description">Dispatcher Action Log / Resolution Notes:</label><br>
+                        <textarea id="description" name="description" rows="4" cols="50" placeholder="Document contact with passenger/driver, local authorities notified, or resolution summary..." required></textarea>
+                    </p>
+                    <p>
+                        <button type="submit">Submit Incident Update</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Central Operations - Safety & Escalations Unit</p>
+    </footer>
+</body>
+</html>
