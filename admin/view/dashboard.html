@@ -2,58 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RideFlow - Admin Dashboard</title>
+    <title>RideFlow Admin - System Analytics & Performance Dashboard</title>
 </head>
 <body>
     <header>
-        <h1>RideFlow Command Center</h1>
+        <h1>RideFlow Command Center Analytics</h1>
         <p>Logged in as: <strong>Super Administrator</strong> | Role: <code>admin</code></p>
         <nav>
             <a href="dashboard.html">Dashboard</a> |
             <a href="users.html">User Directory</a> |
             <a href="rides.html">All Rides</a> |
             <a href="complaints.html">Complaints Queue</a> |
-
+            <a href="register.html">Add New Admin</a> |
+            <a href="../../../commonui/view/html/login.html">Logout</a>
         </nav>
     </header>
     <hr>
 
     <main>
+        
         <section>
-            <h2>System Overview Metrics</h2>
-            <table border="1" cellpadding="8" cellspacing="0">
+            <h2>1. System Performance Overview</h2>
+            <table border="1" cellpadding="10" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th>Current Count</th>
-                        <th>Database Source Table</th>
+                        <th>Total Platform Revenue</th>
+                        <th>Total Ride Requests</th>
+                        <th>Completed Trips</th>
+                        <th>Cancelled Trips</th>
+                        <th>Cancellation Rate</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Total Platform Users</td>
-                        <td >1,245</td>
-                        <td><code>users</code></td>
-                    </tr>
-                    <tr>
-                        <td>Active On-Duty Drivers</td>
-                        <td>88</td>
-                        <td><code>driver_profiles</code></td>
-                    </tr>
-                    <tr>
-                        <td>Rides In Progress</td>
-                        <td>34</td>
-                        <td><code>rides (status='started')</code></td>
-                    </tr>
-                    <tr>
-                        <td>Pending Complaints</td>
-                        <td>12</td>
-                        <td><code>complaints (status='pending')</code></td>
-                    </tr>
-                    <tr>
-                        <td>Unresolved Emergencies</td>
-                        <td><strong>2</strong></td>
-                        <td><code>emergency_requests</code></td>
+                        <td><strong>$124,850.00</strong></td>
+                        <td><strong>8,420</strong></td>
+                        <td><strong>7,650</strong></td>
+                        <td><strong>420</strong></td>
+                        <td><strong>4.98%</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -61,50 +47,152 @@
 
         <br><hr><br>
 
+        
         <section>
-            <h2>Recent Platform Rides</h2>
+            <h2>2. User Registration & Fleet Statistics (`users` & profiles)</h2>
             <table border="1" cellpadding="8" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Ride ID</th>
-                        <th>Passenger ID</th>
-                        <th>Driver ID</th>
-                        <th>Pickup</th>
-                        <th>Destination</th>
-                        <th>Fare</th>
-                        <th>Status</th>
-                        <th>Requested At</th>
+                        <th>User Role</th>
+                        <th>Active Accounts</th>
+                        <th>Pending Approval</th>
+                        <th>Suspended / Inactive</th>
+                        <th>Total Registered</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>#RD-5012</td>
-                        <td>PASS-102</td>
-                        <td>DRV-88</td>
-                        <td>Banani Rd 11</td>
-                        <td>Gulshan 2 Circle</td>
-                        <td>$12.50</td>
-                        <td>Completed</td>
-                        <td>2026-10-09 02:15:00</td>
+                        <td><strong>Passengers</strong></td>
+                        <td>5,200</td>
+                        <td>12</td>
+                        <td>35</td>
+                        <td>5,247</td>
                     </tr>
                     <tr>
-                        <td>#RD-5013</td>
-                        <td>PASS-405</td>
-                        <td>DRV-19</td>
-                        <td>Dhanmondi 27</td>
-                        <td>Uttara Sector 3</td>
-                        <td>$24.00</td>
-                        <td>Started</td>
-                        <td>2026-10-09 02:30:00</td>
+                        <td><strong>Drivers</strong></td>
+                        <td>1,150</td>
+                        <td>45</td>
+                        <td>18</td>
+                        <td>1,213</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dispatchers</strong></td>
+                        <td>28</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Administrators</strong></td>
+                        <td>5</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>5</td>
                     </tr>
                 </tbody>
             </table>
+        </section>
+
+        <br><hr><br>
+
+        
+        <section>
+            <h2>3. Ride Activity & Financial Metrics (`rides` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride Status</th>
+                        <th>Total Count</th>
+                        <th>Gross Value / Revenue Impact</th>
+                        <th>System Operations Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>requested</code> (Pending Match)</td>
+                        <td>15</td>
+                        <td>$225.00 (Estimated)</td>
+                        <td>Awaiting Driver Assignment</td>
+                    </tr>
+                    <tr>
+                        <td><code>assigned</code> (Driver Dispatched)</td>
+                        <td>22</td>
+                        <td>$340.00 (In-Progress)</td>
+                        <td>En route to pickup point</td>
+                    </tr>
+                    <tr>
+                        <td><code>started</code> (Active Trip)</td>
+                        <td>113</td>
+                        <td>$1,850.00 (In-Progress)</td>
+                        <td>On-going journey</td>
+                    </tr>
+                    <tr>
+                        <td><code>completed</code> (Finished)</td>
+                        <td>7,650</td>
+                        <td>$124,850.00 (Collected)</td>
+                        <td>Payment settled successfully</td>
+                    </tr>
+                    <tr>
+                        <td><code>cancelled</code> (Passenger / Dispatcher)</td>
+                        <td>420</td>
+                        <td>$0.00 (Refunded / Waived)</td>
+                        <td>Logged with cancellation reasons</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+        
+        <section>
+            <h2>4. Dispute & Safety Incident Statistics (`complaints` & `emergency_requests`)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Pending Action</th>
+                        <th>In Review / Dispatched</th>
+                        <th>Resolved</th>
+                        <th>Total Cases Logged</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Passenger & Driver Complaints</strong></td>
+                        <td>8</td>
+                        <td>14</td>
+                        <td>312</td>
+                        <td>334</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Emergency SOS Alerts</strong></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>88</td>
+                        <td>91</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <br><hr><br>
+
+       
+        <section>
+            <h2>5. Recent System Activity Stream</h2>
+            <ul>
+                <li><strong>06:45 AM:</strong> New Dispatcher application submitted by <em>Tanvir Rahman</em> (Pending Review).</li>
+                <li><strong>06:30 AM:</strong> SOS Incident <code>EMG-901</code> resolved by Dispatcher <code>DISP-01</code>.</li>
+                <li><strong>06:12 AM:</strong> Complaint <code>CMP-102</code> marked as <em>In Review</em> by Admin <code>USR-001</code>.</li>
+                <li><strong>05:50 AM:</strong> Batch fare synchronization executed across 113 active rides[cite: 5, 6].</li>
+            </ul>
         </section>
     </main>
 
     <hr>
     <footer>
-        <p>&copy; 2026 RideFlow Admin Dashboard</p>
+        <p>&copy; 2026 RideFlow Central Administration & Strategic Analytics</p>
     </footer>
 </body>
 </html>

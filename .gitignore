@@ -1,0 +1,16 @@
+# IDE / Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# Environment & Credentials
+.env
+*.log
+
+# Temp / Cache Files
+*.tmp
