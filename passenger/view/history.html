@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Passenger Ride History</title>
+</head>
+<body>
+    <header>
+        <h1>Passenger Ride History & Summary</h1>
+        <p>Role: <code>passenger</code></p>
+        <nav>
+            <a href="feed.html">Passenger Feed</a> |
+            <a href="history.html">Ride History</a> |
+            <a href="../../commonui/view/html/login.html">Logout</a>
+        </nav>
+    </header>
+    <hr>
+ 
+    <main>
+        <section>
+            <h2>1. Ride History Summary (`rides` table)</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Total Rides Ordered</th>
+                        <th>Total Completed Rides</th>
+                        <th>Total Cancelled Rides</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>15</strong></td>
+                        <td><strong>12</strong></td>
+                        <td><strong>3</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+ 
+        <br><hr><br>
+ 
+        <section>
+            <h2>2. Detailed Trip Log</h2>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID</th>
+                        <th>Starting Location</th>
+                        <th>Ending Location</th>
+                        <th>Status</th>
+                        <th>Fare</th>
+                        <th>Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RD-5010</td>
+                        <td>Banani Rd 11, Dhaka</td>
+                        <td>Gulshan 2 Circle, Dhaka</td>
+                        <td><code>completed</code></td>
+                        <td>$12.50</td>
+                        <td>2026-10-08 14:30:00</td>
+                    </tr>
+                    <tr>
+                        <td>RD-4995</td>
+                        <td>Dhanmondi 27, Dhaka</td>
+                        <td>Uttara Sector 3, Dhaka</td>
+                        <td><code>cancelled</code></td>
+                        <td>$0.00</td>
+                        <td>2026-10-07 11:15:00</td>
+                    </tr>
+                    <tr>
+                        <td>RD-4980</td>
+                        <td>Mirpur 10, Dhaka</td>
+                        <td>Mohakhali DOHS, Dhaka</td>
+                        <td><code>completed</code></td>
+                        <td>$15.00</td>
+                        <td>2026-10-06 09:00:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+ 
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Passenger Portal</p>
+    </footer>
+</body>
+</html>
+ 

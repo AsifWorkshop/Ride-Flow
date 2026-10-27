@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RideFlow - Passenger Feed</title>
+</head>
+<body>
+    <header>
+        <h1>Passenger Feed & Ride Management</h1>
+        <p>Role: <code>passenger</code></p>
+        <nav>
+            <a href="feed.html">Passenger Feed</a> |
+            <a href="../../commonui/view/html/login.html">Logout</a> |
+            <a href="history.html">Check Ride History</a>
+        </nav>
+    </header>
+    <hr>
+ 
+    <main>
+        <section>
+            <h2>1. Order a New Ride (`rides` table)</h2>
+            <p>Enter your starting location and destination location to request a ride:</p>
+           
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Ride Location Details</legend>
+                    <p>
+                        <label for="starting_location">Starting Location:</label><br>
+                        <input type="text" id="starting_location" name="starting_location" placeholder="e.g. Banani Rd 11, Dhaka" required size="40">
+                    </p>
+                    <p>
+                        <label for="destination_location">Destination Location:</label><br>
+                        <input type="text" id="destination_location" name="destination_location" placeholder="e.g. Gulshan 2 Circle, Dhaka" required size="40">
+                    </p>
+                    <p>
+                        <button type="submit">Submit Ride Order</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+ 
+        <br><hr><br>
+ 
+        <section>
+            <h2>2. Quick Available Route Options (`rides` table)</h2>
+            <p>Or select from one of our frequent routes below:</p>
+           
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Option ID</th>
+                        <th>Starting Location</th>
+                        <th>Ending Location</th>
+                        <th>Estimated Distance</th>
+                        <th>Estimated Fare</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OPT-01</td>
+                        <td>Banani Rd 11, Dhaka</td>
+                        <td>Gulshan 2 Circle, Dhaka</td>
+                        <td>2.5 km</td>
+                        <td>$12.50</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <input type="hidden" name="starting_location" value="Banani Rd 11, Dhaka">
+                                <input type="hidden" name="destination_location" value="Gulshan 2 Circle, Dhaka">
+                                <button type="submit">Order This Route</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>OPT-02</td>
+                        <td>Dhanmondi 27, Dhaka</td>
+                        <td>Uttara Sector 3, Dhaka</td>
+                        <td>14.2 km</td>
+                        <td>$22.00</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <input type="hidden" name="starting_location" value="Dhanmondi 27, Dhaka">
+                                <input type="hidden" name="destination_location" value="Uttara Sector 3, Dhaka">
+                                <button type="submit">Order This Route</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>OPT-03</td>
+                        <td>Mirpur 10, Dhaka</td>
+                        <td>Mohakhali DOHS, Dhaka</td>
+                        <td>7.8 km</td>
+                        <td>$15.00</td>
+                        <td>
+                            <form action="#" method="POST">
+                                <input type="hidden" name="starting_location" value="Mirpur 10, Dhaka">
+                                <input type="hidden" name="destination_location" value="Mohakhali DOHS, Dhaka">
+                                <button type="submit">Order This Route</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+ 
+        <br><hr><br>
+ 
+        <section>
+            <h2>3. Active Rides & Cancellation with Complaint (`rides` & `complaints` tables)</h2>
+            <p>If you need to cancel a ride, provide a cancellation reason and direct complaint below:</p>
+ 
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ride ID</th>
+                        <th>Starting Location</th>
+                        <th>Ending Location</th>
+                        <th>Current Status</th>
+                        <th>Cancellation & Complaint Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RD-5014</td>
+                        <td>Banani Rd 11, Dhaka</td>
+                        <td>Gulshan 2 Circle, Dhaka</td>
+                        <td><code>requested</code></td>
+                        <td>
+                            <form action="#" method="POST">
+                                <input type="hidden" name="ride_id" value="RD-5014">
+                                <p>
+                                    <label for="cancellation_reason">Cancellation Reason & Direct Complaint:</label><br>
+                                    <textarea id="cancellation_reason" name="cancellation_reason" rows="2" cols="35" placeholder="Why are you cancelling? Add complaint details..." required></textarea>
+                                </p>
+                                <button type="submit" name="action" value="cancel_ride">Cancel Ride & Submit Complaint</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+ 
+    <hr>
+    <footer>
+        <p>&copy; 2026 RideFlow Passenger Portal</p>
+    </footer>
+</body>
+</html>
+ 
